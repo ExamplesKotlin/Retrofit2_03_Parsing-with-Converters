@@ -59,6 +59,7 @@ object RemoteRepository : Repository {
           liveData.value = emptyList()
         }
       }
+
       override fun onFailure(call: Call<List<Repo>>?, t: Throwable?) {
       }
     })
@@ -72,9 +73,10 @@ object RemoteRepository : Repository {
     api.getGists(LOGIN).enqueue(object : Callback<List<Gist>> {
       override fun onResponse(call: Call<List<Gist>>?, response: Response<List<Gist>>?) {
         if (response != null) {
-          liveData.value = emptyList()
+          liveData.value = response.body()
         }
       }
+
       override fun onFailure(call: Call<List<Gist>>?, t: Throwable?) {
       }
     })
@@ -91,6 +93,7 @@ object RemoteRepository : Repository {
 
         }
       }
+
       override fun onFailure(call: Call<User>?, t: Throwable?) {
       }
     })
