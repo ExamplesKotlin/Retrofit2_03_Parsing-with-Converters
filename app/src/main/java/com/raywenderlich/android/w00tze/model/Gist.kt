@@ -31,5 +31,7 @@
 
 package com.raywenderlich.android.w00tze.model
 
+import com.google.gson.annotations.SerializedName
 
-data class Gist(val createdAt: String, val description: String)
+
+data class Gist(@SerializedName("created_at") val createdAt: String, val description: String)
