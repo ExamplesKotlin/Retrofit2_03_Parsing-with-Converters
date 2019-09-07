@@ -56,7 +56,7 @@ object RemoteRepository : Repository {
     api.getRepos(LOGIN).enqueue(object : Callback<List<Repo>> {
       override fun onResponse(call: Call<List<Repo>>?, response: Response<List<Repo>>?) {
         if (response != null) {
-          liveData.value = emptyList()
+          liveData.value = response.body()
         }
       }
 
@@ -90,7 +90,7 @@ object RemoteRepository : Repository {
     api.getUser(LOGIN).enqueue(object : Callback<User> {
       override fun onResponse(call: Call<User>?, response: Response<User>?) {
         if (response != null) {
-
+          liveData.value = response.body()
         }
       }
 
